@@ -1,0 +1,39 @@
+# playbooks/database_high_latency.yaml
+name: "Database High Latency"
+trigger: "Database p95 latency > 500ms for 5 minutes"
+severity: P1
+
+immediate_actions:
+  - action: "Check database connection pool"
+    command: "kubectl exec db-admin -- show pool status"
+    expected: "Pool usage < 80%"
+  
+  - action: "Check for long-running queries"
+    command: "kubectl exec db-admin -- show processlist"
+    expected: "No queries > 10 seconds"
+  
+  - action: "Enable read replica routing"
+    command: "./scripts/route_reads_to_replica.sh"
+    impact: "Reduces load on primary"
+
+investigation:
+  - "Check recent deployments (last 2 hours)"
+  - "Review slow query log"
+  - "Check disk I/O metrics"
+  - "Review database cache hit ratio"
+
+mitigation_options:
+  degraded_mode:
+    description: "Route reads to replica, queue writes"
+    command: "./scripts/enable_degraded_db_mode.sh"
+    impact: "Write latency +200ms, reads unaffected"
+  
+  emergency_mode:
+    description: "Enable aggressive caching"
+    command: "./scripts/enable_emergency_cache.sh"
+    impact: "5-minute stale data, but fast responses"
+
+rollback_criteria:
+  - "Database latency p95 < 200ms for 10 minutes"
+  - "No active long-running queries"
+  - "Connection pool usage < 60%"
