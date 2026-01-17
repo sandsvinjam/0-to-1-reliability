@@ -1,0 +1,46 @@
+# Include all production requirements
+-r requirements.txt
+
+# Testing
+pytest==7.4.4
+pytest-cov==4.1.0
+pytest-mock==3.12.0
+pytest-asyncio==0.23.3
+pytest-timeout==2.2.0
+pytest-xdist==3.5.0  # Parallel test execution
+factory-boy==3.3.0   # Test fixtures
+faker==22.0.0        # Fake data generation
+
+# Code quality
+flake8==7.0.0
+black==23.12.1
+isort==5.13.2
+mypy==1.8.0
+pylint==3.0.3
+bandit==1.7.6  # Security linting
+
+# Documentation
+sphinx==7.2.6
+sphinx-rtd-theme==2.0.0
+sphinx-autodoc-typehints==1.25.2
+myst-parser==2.0.0  # Markdown support
+
+# Development tools
+ipython==8.19.0
+ipdb==0.13.13
+pre-commit==3.6.0
+
+# Type stubs
+types-PyYAML==6.0.12.12
+types-requests==2.31.0.20240106
+types-python-dateutil==2.8.19.14
+
+# Performance profiling
+py-spy==0.3.14
+memray==1.11.0
+
+# Build and packaging
+build==1.0.3
+twine==4.0.2
+setuptools==69.0.3
+wheel==0.42.0
