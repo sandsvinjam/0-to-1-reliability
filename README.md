@@ -185,7 +185,6 @@ report = review.conduct_review()
 │   │   ├── critical_path_monitor.py
 │   │   ├── sli_monitor.py
 │   │   ├── business_metrics.py
-│   │   └── alerting.py
 │   ├── mitigation/
 │   │   ├── automated_rollback.py
 │   │   ├── feature_flags.py
@@ -201,46 +200,8 @@ report = review.conduct_review()
 │       ├── circuit_breakers.py
 │       ├── progressive_rollout.py
 │       └── chaos_testing.py
-├── examples/
-│   ├── week_01_detection.py
-│   ├── week_03_mitigation.py
-│   ├── week_09_prevention.py
-│   └── full_framework_example.py
-├── config/
-│   ├── trust_levels.yaml
-│   ├── operation_risks.yaml
-│   └── alerts.yaml
-├── dashboards/
-│   ├── grafana/
-│   │   ├── reliability_overview.json
-│   │   ├── incident_tracking.json
-│   │   └── business_metrics.json
-│   └── datadog/
-│       └── reliability_dashboard.json
 ├── playbooks/
 │   ├── database_high_latency.yaml
-│   ├── payment_gateway_failure.yaml
-│   ├── cascading_failure.yaml
-│   └── README.md
-├── tools/
-│   ├── chaos/
-│   │   ├── inject_latency.py
-│   │   ├── inject_errors.py
-│   │   └── partition.py
-│   └── analysis/
-│       ├── incident_analyzer.py
-│       └── roi_calculator.py
-├── tests/
-│   ├── test_detection.py
-│   ├── test_mitigation.py
-│   ├── test_resolution.py
-│   └── test_prevention.py
-├── docs/
-│   ├── implementation_guide.md
-│   ├── week_by_week.md
-│   ├── cost_breakdown.md
-│   ├── case_studies.md
-│   └── faq.md
 ├── requirements.txt
 ├── requirements-dev.txt
 ├── setup.py
